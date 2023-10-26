@@ -1,29 +1,34 @@
 var apiKey = 'rzbEZcwqrjbwZVofGMBowwRLvaOoEmOvbg8tn8vW' // Mars API Key
 
-var name;
-var launch_date;
-var landing_date;
-var status;
-var max_sol;
-var max_date;
-var total_photos;
+// https://api.nasa.gov/index.html for information about api
 
+// Mission Manifest:
+var name; // Name of the Rover
+var launch_date; // The Rover's landing date on Mars
+var landing_date; // The Rover's launch date from Earth
+var status; // The Rover's mission status
+var max_sol; // The most recent Martian sol from which photos exist
+var max_date; // The most recent Earth date from which photos exist
+var total_photos; // Number of photos taken by that Rover
+
+var sol; // Martian sol of the Rover's mission
+var total_photos; // Number of photos taken by that Rover on that sol
+var cameras; // Cameras for which there are photos by that Rover on that sol
+
+// Photo Queries 
 var queryDate = '2023-05-25' // YYYY-MM-DD format
-var querySol = '1000' // 0 to 3986 (max)
-var queryCamera;
-var queryPage;
+var querySol = '1000' // 0 to 3986 (max atm)
+var queryCamera = 'NAVCAM'; // Selection: NAVCAM, MAHLI, PANCAM, MARDI, FHAZ, RHAZ, CHEMCAM, MINITES, MAST
+var queryPage = '1'; // 25 items per page
 
-// Mast and chem cam kinda sucks
-// Nav cam is good
 
 async function requestPhotos(queryDate){
   const img = document.querySelector('img');
-  const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${queryDate}&api_key=${apiKey}`, {mode: 'cors'});
+  const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${queryDate}&camera=${queryCamera}&page=${queryPage}&api_key=${apiKey}`, {mode: 'cors'});
   
   const photosJson = await response.json();
   
   console.log(photosJson)
-
 }
 
 function handleErrorRequest(fn){
