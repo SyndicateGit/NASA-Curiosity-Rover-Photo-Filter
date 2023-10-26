@@ -1,9 +1,13 @@
+/* eslint-disable no-redeclare */
+/* eslint-disable no-unused-vars */
+import './style.css';
+
 var apiKey = 'rzbEZcwqrjbwZVofGMBowwRLvaOoEmOvbg8tn8vW' // Mars API Key
 
 // https://api.nasa.gov/index.html for information about api
 
 // Mission Manifest:
-var name; // Name of the Rover
+var name = 'Curiosity'; // Name of the Rover
 var launch_date; // The Rover's landing date on Mars
 var landing_date; // The Rover's launch date from Earth
 var status; // The Rover's mission status
