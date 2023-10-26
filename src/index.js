@@ -9,7 +9,7 @@ var apiKey = 'rzbEZcwqrjbwZVofGMBowwRLvaOoEmOvbg8tn8vW' // Mars API Key
 
 // Photo Queries to test, replace with form submit later
 var queryRover = 'curiosity'; // Only curiosity atm
-var date = '2023-05-25' // YYYY-MM-DD format
+var date = '2023-05-27' // YYYY-MM-DD format
 var queryEarthDate = '&earth_date=' + date;
 var sol = '1000' // 0 to 3986 (max atm)
 var querSol = '&sol=' + sol;
@@ -35,12 +35,19 @@ async function requestPhotos(){
   // Update currMissionManifest
   const missionInfo = photos[0].rover;
   currMissionManifest = missionInfo;
-  
+
   console.log(currPhotos);
   console.log(currMissionManifest);
+
+  displayPhotos();
 }
 
-
+function displayPhotos(){
+  const image = document.querySelectorAll(".photo");
+  for(let i = 0; i < image.length; i++){
+    image[i].src = currPhotos[i].img_src;
+  }
+}
 
 function handleErrorRequest(fn){
   return function(queryDate){
