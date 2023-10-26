@@ -13,7 +13,7 @@ module.exports = {
         hash: true,
         template: './src/index.html',
         filename: 'index.html',
-        title: 'Mars Rover Photo Search',
+        title: 'Curiosity Rover Photo Search',
     }),
     new CleanWebpackPlugin(),
   ],

@@ -57,6 +57,12 @@ function handleErrorRequest(fn){
   }
 }
 
+// DOM Functions
+
+function generateImageElements(){
+  
+}
+
 const safeRequestPhotos = handleErrorRequest(requestPhotos);
 
 safeRequestPhotos(queryDate);
