@@ -14,7 +14,7 @@ var queryEarthDate =  '2023-05-27';
 var queryDate = queryEarthDate; // Stores which date format user chooses
 
 var queryCamera = 'FHAZ'
-var queryPage = '1'; // 25 items per page
+
 
 
 // Current Photos and Mission Manifest Objects
@@ -105,7 +105,6 @@ submit.addEventListener("click", function(e){
 
   queryDate = document.getElementById("date").value;
 
-  queryPage = document.getElementById("page").value;
 
   requestPhotos();
 })
