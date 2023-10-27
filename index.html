@@ -7,16 +7,43 @@
   <meta http-equiv='cache-control' content='no-cache'> 
 <meta http-equiv='expires' content='0'> 
 <meta http-equiv='pragma' content='no-cache'>
-<script defer src="bundle.js?6b3df88ed5193946cc5b"></script></head>
+<script defer src="bundle.js?97a51390baf0e37ca6d5"></script></head>
 <body>
-  <header></header>
+  <header>
+    <h1>Mars Curiosity Rover Photos</h1>
+  </header>
   <main>
+    <form action="">
+      <div class="input-container">
+        <label for="date">
+        <h2>Earth Date:</h2></label>
+        <input type="date" id="date" name="date" value="2023-05-23" min="2012-08-06" max="2023-10-25">
+      </div>
+      <div class="input-container">
+        <label for="camera">
+          <h2>Camera:</h2>
+        </label>
+        <select name="camera" id="camera">
+          <option value="FHAZ">Front Hazard Avoidance Camera</option>
+          <option value="NAVCAM">Navigation Camera</option>
+          <option value="MAST">Mast Camera</option>
+          <option value="CHEMCAM">Chemistry and Camera Complex</option>
+          <option value="MAHLI">Mars Hand Lens Imager</option>
+          <option value="MARDI">Mars Descent Imager</option>
+          <option value="RHAZ">Rear Hazard Avoidance Camera</option>
+        </select>
+      </div>
+      <div class="input-container">
+        <label for="page">
+          <h2>Page:</h2></label>
+        <input name="page" id="page" type="number" min="1" max="30" value="1">
+      </div>
+      
+      <button type="button" id="submit">Display Photos</button>
+    </form>
     <div class="photo-gallery">
-      <img class="photo" src="" alt="Mars Photo">
     </div>
   </main>
   <footer></footer>
-  <script src="bundle.js">
-  </script>
 </body>
 </html>
