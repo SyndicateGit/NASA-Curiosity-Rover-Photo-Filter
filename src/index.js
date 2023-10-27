@@ -33,6 +33,8 @@ async function requestPhotos(){
   if(currPhotos.length == 0){
     document.querySelector(".error-message").classList.remove("hidden");
     document.querySelector(".photo-gallery").classList.add("hidden");
+    const results = document.querySelector(".results")
+    results.textContent = "0 results for the search."
     return;
   } 
   
