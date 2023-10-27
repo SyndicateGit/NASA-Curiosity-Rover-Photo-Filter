@@ -18,6 +18,8 @@ body{
   grid-template-columns: repeat(5, 1fr);
   place-items: center;
   justify-content: center;
+
+  max-width: max(800px, 50vw);
 }
 
 img{
