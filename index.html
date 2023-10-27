@@ -7,7 +7,7 @@
   <meta http-equiv='cache-control' content='no-cache'> 
 <meta http-equiv='expires' content='0'> 
 <meta http-equiv='pragma' content='no-cache'>
-<script defer src="bundle.js?97a51390baf0e37ca6d5"></script></head>
+<script defer src="bundle.js?0f55ed2b692821f4c5e0"></script></head>
 <body>
   <header>
     <h1>Mars Curiosity Rover Photos</h1>
@@ -24,13 +24,7 @@
           <h2>Camera:</h2>
         </label>
         <select name="camera" id="camera">
-          <option value="FHAZ">Front Hazard Avoidance Camera</option>
           <option value="NAVCAM">Navigation Camera</option>
-          <option value="MAST">Mast Camera</option>
-          <option value="CHEMCAM">Chemistry and Camera Complex</option>
-          <option value="MAHLI">Mars Hand Lens Imager</option>
-          <option value="MARDI">Mars Descent Imager</option>
-          <option value="RHAZ">Rear Hazard Avoidance Camera</option>
         </select>
       </div>
       <div class="input-container">
@@ -38,9 +32,9 @@
           <h2>Page:</h2></label>
         <input name="page" id="page" type="number" min="1" max="30" value="1">
       </div>
-      
       <button type="button" id="submit">Display Photos</button>
     </form>
+    <h2 class="error-message hidden">No Photos Available for this Date</h2>
     <div class="photo-gallery">
     </div>
   </main>
