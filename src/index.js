@@ -23,47 +23,66 @@ var queryPage = '1'; // 25 items per page
 var currPhotos;
 var currMissionManifest;
 
-async function requestPhotos(){
+async function requestPhotos(queryPage, queryCamera, queryDate){
   const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/${queryRover}/photos?page=${queryPage}${queryCamera}${queryDate}&api_key=${apiKey}`, {mode: 'cors'});
   
   const responseJson = await response.json();
   
   // Queried photos
-  const photos = responseJson.photos;
-  currPhotos = photos;
+  const currPhotos =  await responseJson.photos;
 
-  // Update currMissionManifest
-  const missionInfo = photos[0].rover;
-  currMissionManifest = missionInfo;
 
   console.log(currPhotos);
-  console.log(currMissionManifest);
 
-  displayPhotos();
-}
-
-function displayPhotos(){
+  // Updates mission manifest on firs load
+  if(currMissionManifest == undefined){
+    const missionInfo =  currPhotos[0].rover;
+    currMissionManifest =  missionInfo;
+  }
+  
   const image = document.querySelectorAll(".photo");
-  for(let i = 0; i < image.length; i++){
-    image[i].src = currPhotos[i].img_src;
+  for(let i = 0; i < 25; i++){
+    image[i].src = await currPhotos[i].img_src;
   }
+
+  const inputDate = document.querySelector("#date")
+  const max_date = await currMissionManifest.max_date;
+
+  inputDate.value = max_date;
+  inputDate.attributes.max.value = max_date;
 }
 
-function handleErrorRequest(fn){
-  return function(queryDate){
-    return fn(queryDate).catch(function(error){
-      console.log(error)
-    })
-  }
-}
 
 // DOM Functions
 
 function generateImageElements(){
-  
+  const photoGallery = document.querySelector(".photo-gallery");
+  for(let i = 0; i < 25; i++){
+    const image = document.createElement("img");
+    image.classList.add("photo");
+    photoGallery.appendChild(image);
+  }
 }
 
-const safeRequestPhotos = handleErrorRequest(requestPhotos);
 
-safeRequestPhotos(queryDate);
+document.querySelector("#submit").onclick = () => {
+  submitForm();
+  requestPhotos(queryPage, queryCamera, queryDate);
+};
+
+
+function submitForm(){
+  queryCamera = document.getElementById("camera").value;
+  
+  queryDate = document.getElementById("date").value;
+  
+  queryPage = document.getElementById("page").value;
+
+}
+
+
+generateImageElements();
+
+requestPhotos(queryPage, queryCamera, queryDate);
+
 
