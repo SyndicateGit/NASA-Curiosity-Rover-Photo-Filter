@@ -24,13 +24,7 @@
           <h2>Camera:</h2>
         </label>
         <select name="camera" id="camera">
-          <option value="FHAZ">Front Hazard Avoidance Camera</option>
           <option value="NAVCAM">Navigation Camera</option>
-          <option value="MAST">Mast Camera</option>
-          <option value="CHEMCAM">Chemistry and Camera Complex</option>
-          <option value="MAHLI">Mars Hand Lens Imager</option>
-          <option value="MARDI">Mars Descent Imager</option>
-          <option value="RHAZ">Rear Hazard Avoidance Camera</option>
         </select>
       </div>
       <div class="input-container">
@@ -38,9 +32,9 @@
           <h2>Page:</h2></label>
         <input name="page" id="page" type="number" min="1" max="30" value="1">
       </div>
-      
       <button type="button" id="submit">Display Photos</button>
     </form>
+    <h2 class="error-message hidden">No Photos Available for this Date</h2>
     <div class="photo-gallery">
     </div>
   </main>

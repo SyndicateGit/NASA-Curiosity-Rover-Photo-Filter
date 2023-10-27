@@ -48,3 +48,10 @@ form{
   align-items: center;
 }
 
+.error-message{
+  
+}
+
+.hidden{
+  display: none;
+}
