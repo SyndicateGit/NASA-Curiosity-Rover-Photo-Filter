@@ -22,7 +22,7 @@ var currPhotos;
 var currMissionManifest;
 
 async function requestPhotos(){
-  const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/${queryRover}/photos?page=${queryPage}&camera=${queryCamera}&earth_date=${queryDate}&api_key=${apiKey}`, {mode: 'cors'});
+  const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/${queryRover}/photos?&earth_date=${queryDate}&camera=${queryCamera}&api_key=${apiKey}`, {mode: 'cors'});
   
   const responseJson = await response.json();
   
@@ -57,8 +57,9 @@ async function requestPhotos(){
 }
 
 function displayPhotos(){
+  generateImageElements();
   const image = document.querySelectorAll(".photo");
-  for(let i = 0; i < 25; i++){
+  for(let i = 0; i < currPhotos.length; i++){
     image[i].src = currPhotos[i].img_src;
   }
 }
@@ -83,13 +84,14 @@ function handleErrorRequest(fn){
 
 function generateImageElements(){
   const photoGallery = document.querySelector(".photo-gallery");
-  for(let i = 0; i < 25; i++){
+  photoGallery.innerHTML = "";
+  for(let i = 0; i < currPhotos.length; i++){
     const image = document.createElement("img");
     image.classList.add("photo");
+    image.src = "";
     photoGallery.appendChild(image);
   }
 }
-
 
 const submit = document.querySelector("#submit");
 submit.addEventListener("click", function(e){
