@@ -5,9 +5,12 @@
   <title>Curiosity Rover Photo Search</title>
   <link rel="stylesheet" href="style.css">
   <meta http-equiv='cache-control' content='no-cache'> 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
 <meta http-equiv='expires' content='0'> 
 <meta http-equiv='pragma' content='no-cache'>
-<script defer src="bundle.js?7f9b2623a241be6758b0"></script></head>
+<script defer src="bundle.js?5e3eb369c3f3914ff71e"></script></head>
 <body>
   <header>
     <h1>Mars Curiosity Rover Photos</h1>
@@ -35,9 +38,14 @@
       </div>
      
       <button type="button" id="submit">Display Photos</button>
+
+      <div class="result-text-container">
+        <h2 class="error-message hidden">No Photos Available for this Date</h2>
+        <h2 class="results"></h2>
+      </div>
     </form>
-    <h2 class="error-message hidden">No Photos Available for this Date</h2>
-    <h2 class="results"></h2>
+
+    
     <div class="photo-gallery">
     </div>
   </main>
