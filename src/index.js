@@ -13,7 +13,7 @@ var queryEarthDate =  '2023-05-27';
 
 var queryDate = queryEarthDate; // Stores which date format user chooses
 
-var queryCamera = 'NAVCAM'
+var queryCamera = 'FHAZ'
 var queryPage = '1'; // 25 items per page
 
 
@@ -59,9 +59,12 @@ async function requestPhotos(){
 function displayPhotos(){
   generateImageElements();
   const image = document.querySelectorAll(".photo");
+  const results = document.querySelector(".results")
   for(let i = 0; i < currPhotos.length; i++){
     image[i].src = currPhotos[i].img_src;
   }
+
+  results.textContent = "Showing " + currPhotos.length + " results for the search.";
 }
 
 function setDateBounds(){
